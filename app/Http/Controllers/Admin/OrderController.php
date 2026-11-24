@@ -43,6 +43,11 @@ class OrderController extends Controller
             'payment_status' => 'required|in:unpaid,paid',
         ]);
 
+        // Aturan Bisnis: Pesanan tidak boleh 'completed' (selesai) jika pembayaran belum lunas (unpaid)
+        if ($validated['status'] === 'completed' && $validated['payment_status'] === 'unpaid') {
+            return back()->with('error', 'Pesanan tidak dapat diselesaikan jika status pembayaran masih Belum Lunas (Unpaid). Silakan ubah Status Pembayaran menjadi Lunas (Paid) terlebih dahulu.');
+        }
+
         $order->update([
             'status' => $validated['status'],
             'payment_status' => $validated['payment_status'],
