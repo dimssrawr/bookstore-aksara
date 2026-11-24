@@ -79,7 +79,7 @@ class CheckoutController extends Controller
                     'total_amount' => $totalAmount,
                     'status' => 'pending',
                     'payment_method' => $validated['payment_method'],
-                    'payment_status' => 'unpaid',
+                    'payment_status' => 'paid',
                     'customer_name' => $validated['customer_name'],
                     'customer_phone' => $validated['customer_phone'],
                     'shipping_address' => $validated['shipping_address'],

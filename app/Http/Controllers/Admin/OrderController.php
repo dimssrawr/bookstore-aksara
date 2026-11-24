@@ -40,17 +40,15 @@ class OrderController extends Controller
     {
         $validated = $request->validate([
             'status' => 'required|in:pending,processing,shipped,completed,cancelled',
-            'payment_status' => 'required|in:unpaid,paid',
+            'payment_status' => 'nullable|in:unpaid,paid',
         ]);
 
-        // Aturan Bisnis: Pesanan tidak boleh 'completed' (selesai) jika pembayaran belum lunas (unpaid)
-        if ($validated['status'] === 'completed' && $validated['payment_status'] === 'unpaid') {
-            return back()->with('error', 'Pesanan tidak dapat diselesaikan jika status pembayaran masih Belum Lunas (Unpaid). Silakan ubah Status Pembayaran menjadi Lunas (Paid) terlebih dahulu.');
-        }
+        // Pada sistem Payment at Delivery (pembayaran sebelum buku dikirim), pembayaran selalu Lunas (Paid)
+        $paymentStatus = $validated['payment_status'] ?? 'paid';
 
         $order->update([
             'status' => $validated['status'],
-            'payment_status' => $validated['payment_status'],
+            'payment_status' => $paymentStatus,
         ]);
 
         return back()->with('success', "Status pesanan {$order->order_number} berhasil diperbarui.");

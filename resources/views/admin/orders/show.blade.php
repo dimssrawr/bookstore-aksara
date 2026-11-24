@@ -114,15 +114,15 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label small fw-semibold text-secondary">Status Pembayaran <span class="text-danger">*</span></label>
-                    <select name="payment_status" id="paymentStatusSelect" class="form-select">
-                        <option value="unpaid" {{ $order->payment_status === 'unpaid' ? 'selected' : '' }}>
-                            Belum Lunas (Unpaid)
-                        </option>
-                        <option value="paid" {{ $order->payment_status === 'paid' ? 'selected' : '' }}>
-                            Lunas (Paid)
-                        </option>
-                    </select>
+                    <label class="form-label small fw-semibold text-secondary">Status Pembayaran:</label>
+                    <div class="d-flex align-items-center gap-2 p-2 bg-success bg-opacity-10 text-success rounded border border-success border-opacity-25 fw-bold small">
+                        <i class="bi bi-check-circle-fill fs-5 flex-shrink-0"></i>
+                        <div>
+                            <div>Lunas (Paid)</div>
+                            <small class="text-muted fw-normal d-block">Payment at Delivery: Pembayaran terverifikasi lunas saat pesanan dibuat.</small>
+                        </div>
+                    </div>
+                    <input type="hidden" name="payment_status" value="paid">
                 </div>
 
                 <div class="mb-4">
@@ -144,12 +144,7 @@
                             Dibatalkan (Cancelled)
                         </option>
                     </select>
-                    <small class="text-muted d-block mt-1">Ubah status pesanan sesuai tahapan proses logistik.</small>
-
-                    <div id="unpaidAlert" class="alert alert-warning small py-2 px-3 mt-2 d-none">
-                        <i class="bi bi-exclamation-triangle-fill me-1"></i>
-                        Status Selesai mewajibkan pembayaran <strong>Lunas (Paid)</strong>. Status pembayaran otomatis dialihkan ke Lunas.
-                    </div>
+                    <small class="text-muted d-block mt-1">Ubah status pesanan sesuai tahapan pengiriman buku.</small>
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100 fw-bold rounded-pill py-2">
@@ -160,43 +155,4 @@
     </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const paymentSelect = document.getElementById('paymentStatusSelect');
-    const statusSelect = document.getElementById('orderStatusSelect');
-    const form = document.getElementById('orderStatusForm');
-    const unpaidAlert = document.getElementById('unpaidAlert');
-
-    if (statusSelect && paymentSelect) {
-        // Jika admin memilih status Selesai, pembayaran otomatis diubah ke Lunas
-        statusSelect.addEventListener('change', function () {
-            if (this.value === 'completed') {
-                if (paymentSelect.value === 'unpaid') {
-                    paymentSelect.value = 'paid';
-                    if (unpaidAlert) unpaidAlert.classList.remove('d-none');
-                }
-            } else {
-                if (unpaidAlert) unpaidAlert.classList.add('d-none');
-            }
-        });
-
-        // Jika admin mengubah pembayaran jadi Belum Lunas saat status Selesai, cegah Selesai
-        paymentSelect.addEventListener('change', function () {
-            if (this.value === 'unpaid' && statusSelect.value === 'completed') {
-                statusSelect.value = 'processing';
-                alert('Pesanan tidak dapat berstatus Selesai jika pembayaran masih Belum Lunas. Status pesanan dialihkan ke Sedang Diproses.');
-                if (unpaidAlert) unpaidAlert.classList.add('d-none');
-            }
-        });
-
-        // Validasi saat submit form
-        form.addEventListener('submit', function (e) {
-            if (statusSelect.value === 'completed' && paymentSelect.value === 'unpaid') {
-                e.preventDefault();
-                alert('Peringatan: Pesanan tidak dapat diselesaikan jika status pembayaran masih Belum Lunas (Unpaid)! Silakan ubah Status Pembayaran ke Lunas (Paid) terlebih dahulu.');
-            }
-        });
-    }
-});
-</script>
 @endsection

@@ -171,38 +171,38 @@
                         </div>
                     </div>
 
-                    <!-- Category 3: Bank Transfer -->
-                    <div class="small fw-bold text-uppercase text-muted mb-2"><i class="bi bi-bank me-1 text-primary"></i>Transfer Bank (Sebelum Dikirim)</div>
+                    <!-- Category 3: Virtual Account -->
+                    <div class="small fw-bold text-uppercase text-muted mb-2"><i class="bi bi-bank me-1 text-primary"></i>Virtual Account Bank (Sebelum Dikirim)</div>
                     <div class="d-flex flex-column gap-2">
-                        <!-- BCA -->
+                        <!-- BCA Virtual Account -->
                         <div class="border rounded-3 p-3 bg-white">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="payment_method" id="payBCA" 
-                                       value="Bank BCA (Virtual Account / Transfer)">
+                                       value="BCA Virtual Account">
                                 <label class="form-check-label w-100 ms-2" for="payBCA">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <strong class="text-dark"><i class="bi bi-building me-1 text-primary"></i>Bank Central Asia (BCA)</strong>
-                                        <span class="badge bg-light text-primary border">No. Rek: 8829-1029-338</span>
+                                        <strong class="text-dark"><i class="bi bi-building me-1 text-primary"></i>BCA Virtual Account</strong>
+                                        <span class="badge bg-light text-primary border">No. VA: 8829-1029-338</span>
                                     </div>
                                     <small class="text-muted d-block mt-1">
-                                        Transfer via BCA Mobile / KlikBCA / ATM sebelum pesanan kami proses & kirimkan.
+                                        Pembayaran otomatis melalui BCA Mobile / KlikBCA / ATM BCA.
                                     </small>
                                 </label>
                             </div>
                         </div>
 
-                        <!-- Mandiri / BRI / BNI -->
+                        <!-- Mandiri Virtual Account -->
                         <div class="border rounded-3 p-3 bg-white">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="payment_method" id="payOtherBank" 
-                                       value="Bank Mandiri / BRI / BNI">
+                                       value="Mandiri Virtual Account">
                                 <label class="form-check-label w-100 ms-2" for="payOtherBank">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <strong class="text-dark"><i class="bi bi-bank2 me-1 text-secondary"></i>Bank Mandiri / BRI / BNI</strong>
-                                        <span class="badge bg-light text-secondary border">ATM & M-Banking</span>
+                                        <strong class="text-dark"><i class="bi bi-bank2 me-1 text-secondary"></i>Mandiri Virtual Account</strong>
+                                        <span class="badge bg-light text-secondary border">No. VA: 8901-2345-678</span>
                                     </div>
                                     <small class="text-muted d-block mt-1">
-                                        Transfer antar bank atau sesama bank melalui nomor rekening resmi toko buku.
+                                        Pembayaran otomatis melalui Livin' by Mandiri atau ATM Mandiri.
                                     </small>
                                 </label>
                             </div>
