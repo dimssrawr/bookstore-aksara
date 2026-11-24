@@ -23,31 +23,24 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         // ============================================================
-        // PENGATURAN MODE LOGIN SISTEM
-        // 'auto'  : Mendukung multi-kredensial (Email ATAU Nama Akun)
-        // 'name'  : Autentikasi menggunakan Nama Akun Pengguna
-        // 'email' : Autentikasi menggunakan Alamat Email Pengguna
+        // PENGATURAN MODE LOGIN (CUKUP UBAH DI SINI):
+        // 'auto'  : Otomatis bisa login pakai Email ATAU Nama Akun
+        // 'email' : Hanya bisa login pakai Email
+        // 'name'  : Hanya bisa login pakai Nama
         // ============================================================
-        $loginWith = 'auto';
+        $loginWith = 'auto'; // Ganti ke 'email' atau 'name' jika diminta penguji
 
-        // Ambil nilai yang diketik pengguna di form
-        $inputValue = $request->input('login') ?? $request->input('name') ?? $request->input('email');
+        // Samakan input agar kompatibel dengan input form mana pun
+        $inputValue = $request->input('login') ?? $request->input('email') ?? $request->input('name');
+        $request->merge([
+            'login' => $inputValue,
+            'email' => $inputValue,
+            'name'  => $inputValue,
+        ]);
 
-        if ($loginWith === 'name') {
-            $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-                'password' => ['required'],
-            ], [
-                'name.required' => 'Nama pengguna wajib diisi.',
-                'password.required' => 'Password wajib diisi.',
-            ]);
-
-            $credentials = [
-                'name' => $inputValue,
-                'password' => $request->password,
-            ];
-        } elseif ($loginWith === 'email') {
-            $request->validate([
+        if ($loginWith === 'email') {
+            // Mode Login Khusus EMAIL
+            $credentials = $request->validate([
                 'email' => ['required', 'email'],
                 'password' => ['required'],
             ], [
@@ -55,13 +48,17 @@ class AuthController extends Controller
                 'email.email' => 'Format email tidak valid.',
                 'password.required' => 'Password wajib diisi.',
             ]);
-
-            $credentials = [
-                'email' => $inputValue,
-                'password' => $request->password,
-            ];
+        } elseif ($loginWith === 'name') {
+            // Mode Login Khusus NAMA
+            $credentials = $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'password' => ['required'],
+            ], [
+                'name.required' => 'Nama pengguna wajib diisi.',
+                'password.required' => 'Password wajib diisi.',
+            ]);
         } else {
-            // Mode 'auto': Mendukung Nama maupun Email secara otomatis
+            // Mode AUTO (Bisa Email ATAU Nama sekaligus)
             if (empty($inputValue)) {
                 return back()->withErrors(['login' => 'Email atau Nama akun wajib diisi.'])->withInput();
             }
@@ -72,9 +69,7 @@ class AuthController extends Controller
                 'password.required' => 'Password wajib diisi.',
             ]);
 
-            // Deteksi otomatis apakah input berupa email atau nama
             $fieldType = filter_var($inputValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
-
             $credentials = [
                 $fieldType => $inputValue,
                 'password' => $request->password,
