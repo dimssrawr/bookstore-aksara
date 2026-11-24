@@ -11,16 +11,28 @@ Aplikasi web Toko Buku (*BookStore*) modern, responsif, dan lengkap yang dibangu
 
 ---
 
-## 📸 Dokumentasi & Screenshot Antarmuka
+## 📸 Dokumentasi & Screenshot Antarmuka Web
 Dokumentasi visual tangkapan layar antarmuka sistem tersimpan di folder [`screenshots/`](screenshots/):
 
-| 1. Desain UI/UX Figma | 2. Dashboard Administrator |
+| 1. Halaman Beranda (Home) | 2. Halaman Katalog Buku |
 | :---: | :---: |
-| ![Desain Figma](screenshots/01-desain-figma-overview.jpg) | ![Dashboard Admin](screenshots/02-dashboard-admin.jpg) |
+| ![Beranda](screenshots/01-halaman-beranda.png) | ![Katalog Buku](screenshots/02-katalog-buku.png) |
 
-| 3. Lingkungan Server Laragon |
-| :---: |
-| ![Server Laragon](screenshots/03-laragon-server.png) |
+| 3. Halaman Detail Buku | 4. Halaman Tentang Kami (About Us) |
+| :---: | :---: |
+| ![Detail Buku](screenshots/03-detail-buku.png) | ![Tentang Kami](screenshots/04-tentang-kami.png) |
+
+| 5. Halaman Kontak & Chat Admin | 6. Halaman Masuk (Login) |
+| :---: | :---: |
+| ![Kontak Chat](screenshots/05-kontak-chat.png) | ![Login](screenshots/06-halaman-login.png) |
+
+| 7. Halaman Registrasi Akun | 8. Dashboard Administrator |
+| :---: | :---: |
+| ![Register](screenshots/07-halaman-register.png) | ![Dashboard Admin](screenshots/08-dashboard-admin.jpg) |
+
+| 9. Desain UI/UX Figma Overview | 10. Lingkungan Server Laragon |
+| :---: | :---: |
+| ![Desain Figma](screenshots/09-desain-figma-overview.jpg) | ![Server Laragon](screenshots/10-laragon-server.png) |
 
 ---
 
