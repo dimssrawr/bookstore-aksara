@@ -6,7 +6,7 @@ Aplikasi web Toko Buku (*BookStore*) modern, responsif, dan lengkap yang dibangu
 ---
 
 ## 🎨 Desain UI/UX (Figma Prototype)
-* **Tautan Desain Figma:** [Buka Desain UI/UX Aksara BookStore di Figma](LINK_FIGMA_ANDA_DISINI)
+* **Tautan Desain Figma:** [Buka Desain UI/UX Aksara BookStore di Figma](https://www.figma.com/design/arUNIZqBLnnwwnmFADJxeq/MOBILE-PERPUS?node-id=0-1&p=f&t=DVKH2w6y84D9NSXA-0)
 * Seluruh rancangan antarmuka (12 Halaman: Beranda, Katalog Buku, Detail Buku, Keranjang, Checkout, About Us, Kontak, Login, Register, Dashboard Admin, Kelola Buku, Kelola Pesanan) telah diimplementasikan secara presisi.
 
 ---
