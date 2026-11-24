@@ -25,7 +25,7 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        // Catatan Soal USK No 10: Jika penguji minta deskripsi minimal 50 karakter, tambahkan min:50
+        // Validasi input kategori: Nama unik dan deskripsi opsional
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name',
             'description' => 'nullable|string|max:1000',

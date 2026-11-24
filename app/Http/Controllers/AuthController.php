@@ -23,12 +23,12 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         // ============================================================
-        // PENGATURAN MODE LOGIN (SOAL USK)
-        // 'auto'  : BISA DUA-DUANYA (Otomatis bisa pakai Email ATAU Nama!)
-        // 'name'  : HANYA BISA LOGIN PAKAI NAMA (Soal tantangan USK)
-        // 'email' : HANYA BISA LOGIN PAKAI EMAIL
+        // PENGATURAN MODE LOGIN SISTEM
+        // 'auto'  : Mendukung multi-kredensial (Email ATAU Nama Akun)
+        // 'name'  : Autentikasi menggunakan Nama Akun Pengguna
+        // 'email' : Autentikasi menggunakan Alamat Email Pengguna
         // ============================================================
-        $loginWith = 'auto'; // Cukup ubah ke 'name' atau 'email' jika diminta penguji
+        $loginWith = 'auto';
 
         // Ambil nilai yang diketik pengguna di form
         $inputValue = $request->input('login') ?? $request->input('name') ?? $request->input('email');
