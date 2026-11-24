@@ -157,6 +157,14 @@ class BookController extends Controller
 
     public function destroy(Book $book)
     {
+        // Validasi Integritas Data: Buku yang sudah pernah dipesan TIDAK BOLEH dihapus!
+        if ($book->orderItems()->count() > 0) {
+            return back()->with('error', "Akses Ditolak! Buku '{$book->title}' tidak dapat dihapus karena sudah memiliki riwayat transaksi pesanan pelanggan. Sebagai alternatif, Anda dapat mengubah stoknya menjadi 0.");
+        }
+
+        // Hapus dari keranjang belanja jika masih ada yang menyimpannya
+        $book->carts()->delete();
+
         if ($book->cover_image && Storage::disk('public')->exists($book->cover_image)) {
             Storage::disk('public')->delete($book->cover_image);
         }
