@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="420" rx="12" fill="url(#grad1)" />
+  <rect x="25" y="25" width="250" height="370" rx="8" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" />
+  <g fill="#ffffff" opacity="0.9" transform="translate(110, 150)">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" display="none"/>
+    <path d="M40 0H8C3.58 0 0 3.58 0 8v64c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V8c0-4.42-3.58-8-8-8zm0 64H8c-2.21 0-4-1.79-4-4V8c0-2.21 1.79-4 4-4h32c2.21 0 4 1.79 4 4v52c0 2.21-1.79 4-4 4z" transform="scale(1.7) translate(10, 10)" opacity="0.15"/>
+    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      <line x1="8" y1="6" x2="16" y2="6"></line>
+      <line x1="8" y1="10" x2="16" y2="10"></line>
+      <line x1="8" y1="14" x2="13" y2="14"></line>
+    </svg>
+  </g>
+  <text x="150" y="270" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" text-anchor="middle">Toko Buku Aksara</text>
+  <text x="150" y="295" fill="rgba(255,255,255,0.75)" font-family="system-ui, -apple-system, sans-serif" font-size="13" text-anchor="middle">Buku Berkualitas</text>
+</svg>
